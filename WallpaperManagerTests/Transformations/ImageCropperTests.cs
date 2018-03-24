@@ -15,7 +15,7 @@ namespace WallpaperManager.Transformations.Tests
         [TestMethod()]
         public void cropTest()
         {
-            ImageCropper ic = new ImageCropper(Image.FromFile("testResources/test.png");
+            ImageCropper ic = new ImageCropper(Image.FromFile("testResources/test.png"));
 
             Image im = ic.crop(20, 20, 10, 10);
 

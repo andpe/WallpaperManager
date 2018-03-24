@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WallpaperManager.Handlers
 {
-    public class ResolutionHandler
+    public class SystemEventHandler
     {
         public enum Orientation
         {
@@ -23,12 +23,12 @@ namespace WallpaperManager.Handlers
 
         public delegate void OrientationChangedHandler(object sender, Orientation newOrientation);
 
-        public ResolutionHandler()
+        public SystemEventHandler()
         {
             SystemEvents.DisplaySettingsChanged += DisplaySettingsChanged_Handler;
         }
 
-        ~ResolutionHandler()
+        ~SystemEventHandler()
         {
             // Don't leak handlers, since this is a static handler we have to do this...
             SystemEvents.DisplaySettingsChanged -= DisplaySettingsChanged_Handler;

@@ -18,6 +18,11 @@ namespace WallpaperManager.Transformations
             mImage = image;
         }
 
+        ~ImageCropper()
+        {
+            mImage.Dispose();
+        }
+
         /// <summary>
         /// Crop the image assigned to this instance.
         /// </summary>
@@ -34,7 +39,7 @@ namespace WallpaperManager.Transformations
             // Make sure the dst bitmap has the same resolution as the source one.
             dstBitmap.SetResolution(srcBitmap.VerticalResolution, srcBitmap.HorizontalResolution);
 
-            using (Graphics g = Graphics.FromImage(mImage))
+            using (Graphics g = Graphics.FromImage(dstBitmap))
             {
                 g.DrawImage(srcBitmap, new Rectangle(0, 0, width, height), sourceRectangle, GraphicsUnit.Pixel);
             }
