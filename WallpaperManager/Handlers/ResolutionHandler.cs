@@ -25,7 +25,13 @@ namespace WallpaperManager.Handlers
 
         public ResolutionHandler()
         {
-            SystemEvents.DisplaySettingsChanged += new EventHandler(DisplaySettingsChanged_Handler);
+            SystemEvents.DisplaySettingsChanged += DisplaySettingsChanged_Handler;
+        }
+
+        ~ResolutionHandler()
+        {
+            // Don't leak handlers, since this is a static handler we have to do this...
+            SystemEvents.DisplaySettingsChanged -= DisplaySettingsChanged_Handler;
         }
 
         public void DisplaySettingsChanged_Handler(object sender, EventArgs e)
